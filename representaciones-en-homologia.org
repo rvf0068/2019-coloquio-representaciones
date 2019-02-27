@@ -47,13 +47,16 @@
     :PROPERTIES:
     :BEAMER_env: exampleblock
     :END:
-    - Si \(X=\{1,2,\ldots,n\}\) y \(G\) es el grupo de funciones
-      biyectivas \(X\to X\) con la operación de composición y elemento
-      neutro la función identidad, entonces \(G\) es el *grupo
-      simétrico* \(S_{n}\).
-    - Si \(V\) es un espacio vectorial, \(\mathrm{GL}(V)\) es el grupo
-      de las transformaciones lineales \(V\to V\) invertibles con la
-      operación de composición.
+    - \(S_{n}\) :: grupo de funciones biyectivas de
+                   \(\{1,2,\ldots,n\}\) en sí mismo. (*grupo
+                   simétrico*)
+    - \(\mathrm{GL}(V)\) :: grupo de las transformaciones lineales
+         \(V\to V\) invertibles de un espacio vectorial \(V\). (*grupo
+         general lineal*)
+    - \(M_{n}(F)\) :: grupo de matrices cuadradas invertibles
+                      \(n\times n\) con entradas en un campo
+                      \(F\). (*grupo de matrices*)
+
 
 ** Representación
 
@@ -67,6 +70,18 @@
     \phi\colon G\to \mathrm{GL}(V).
     \end{displaymath}
 
+*** Representación matricial                                   :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Sean \(G\) un grupo y \(V\) un espacio vectorial. Una
+    *representación matricial* es un homomorfismo de grupos
+    \begin{displaymath}
+    \phi\colon G\to M_{n}(F).
+    \end{displaymath}
+
+
+** Ejemplos
 *** Ejemplos de representaciones			     :B_exampleblock:
     :PROPERTIES:
     :BEAMER_env: exampleblock
