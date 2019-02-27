@@ -1,5 +1,7 @@
+#+macro: newline @@latex:\\[0.6em]@@ @@html:<br>@@
+
 #+title: Representaciones del grupo simétrico en homologías
-#+author: Rafael Villarroel Flores, UAEH
+#+author: Rafael Villarroel Flores, UAEH{{{newline}}}\scriptsize Trabajo conjunto con Paco Larrión, Miguel Pizaña, {{{newline}}}Daniel Robles, Briseida Trejo y Manuel Campero{{{newline}}}
 # #+date: 30 de octubre de 2014
 # #+date: 5 de mayo de 2015
 #+date: 6 de marzo de 2019
