@@ -5,38 +5,7 @@
 # #+date: 30 de octubre de 2014
 # #+date: 5 de mayo de 2015
 #+date: 6 de marzo de 2019
-#+options: H:2
-
-#+latex_class: beamer-talk
-#+startup: beamer
-#+language: es
-
-#+latex_class_options: [spanish,presentation]
-
-#+latex_header: \usepackage{arev}
-#+latex_header: \usepackage{tikz}
-#+latex_header: \usepackage{tikz-cd}
-#+latex_header: \usepackage{tkz-graph}
-#+latex_header: \usepackage{tkz-berge}
-#+latex_header: \usepackage{ytableau}
-#+latex_header: \usetikzlibrary{graphs,graphs.standard}
-#+latex_header: \usepackage[spanish,mexico,es-noshorthands]{babel}
-
-#+beamer_header: \languagepath{spanish}
-#+beamer_header: \beamerdefaultoverlayspecification{<+->}
-#+beamer_header: \setbeamertemplate{items}[circle]
-
-* Hidden code							   :noexport:
-
-#+name: fullheightgraphic
-#+begin_src latex :var yourimage="" :results latex :exports none
-\setbeamertemplate{navigation symbols}{}
-\begin{tikzpicture}[remember picture,overlay]
-    \node[xshift=0cm,yshift=0cm] at (current page.center) {
-        \includegraphics[height=\paperheight]{yourimage}
-    };
-\end{tikzpicture}
-#+end_src
+#+setupfile: options.org
 
 * Introducción
 
@@ -64,31 +33,6 @@
 
 * Representaciones del grupo simétrico
 
-** Parte
-   :PROPERTIES:
-   :BEAMER_opt: plain
-   :END:
-
-#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
-
-#+begin_latex
-\renewcommand*\sfdefault{ugq}
-\sffamily\bfseries
-\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
-  \node[%
-  huge,
-  right,
-  align=left,
-  rotate=5,
-  yshift=-1cm,
-  opacity=0.85,
-  text width=4.4cm,
-  minimum height=8.5cm,
-  fill=white]%
-  {\color{red!80!black}Parte 1\\ \color{black!65}Represen-\\ taciones\\ del grupo simétrico};
-\end{tikzpicture}
-#+end_latex
-      
 ** Definiciones
 
 *** Grupo						       :B_definition:
@@ -280,31 +224,9 @@
      \mathrm{ind}^{S_{5}}_{S_{4}} S^{\ydiagram{3,1}} = S^{\ydiagram{4,1}}\oplus S^{\ydiagram{3,2}}\oplus S^{\ydiagram{3,1,1}}.
      \end{displaymath}
 
+
 * Complejos simpliciales y homología
-** Parte
-   :PROPERTIES:
-   :BEAMER_opt: plain
-   :END:
 
-#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
-
-#+begin_latex
-\renewcommand*\sfdefault{ugq}
-\sffamily\bfseries
-\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
-  \node[%
-  huge,
-  right,
-  align=left,
-  rotate=5,
-  yshift=-1cm,
-  opacity=0.85,
-  text width=5cm,
-  minimum height=8.5cm,
-  fill=white]%
-  {\color{red!80!black}Parte 2\\ \color{black!65}Complejos\\simpliciales y\\homología};
-\end{tikzpicture}
-#+end_latex
 ** Complejos simpliciales
    
 *** 
@@ -519,32 +441,8 @@
     H_{k}(\Delta_{1})\cong H_{k}(\Delta_{2}).
     \end{displaymath}
 
+
 * Gráficas
-
-** Parte
-   :PROPERTIES:
-   :BEAMER_opt: plain
-   :END:
-
-#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
-
-#+begin_latex
-\renewcommand*\sfdefault{ugq}
-\sffamily\bfseries
-\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
-  \node[%
-  huge,
-  right,
-  align=left,
-  rotate=5,
-  yshift=-1cm,
-  opacity=0.85,
-  text width=4.4cm,
-  minimum height=8.5cm,
-  fill=white]%
-  {\color{red!80!black}Parte 3\\ \color{black!65}Gráficas};
-\end{tikzpicture}
-#+end_latex
 
 ** Gráfica de emparejamientos
 
@@ -748,31 +646,8 @@
      #+RESULTS[d41097a026ec8ff539ae07d803c3115387472de0]: petersen-clanes-02
      [[file:petersen-clanes-02.png]]
 
+
 * Representaciones en homologías
-** Parte
-   :PROPERTIES:
-   :BEAMER_opt: plain
-   :END:
-
-#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
-
-#+begin_latex
-\renewcommand*\sfdefault{ugq}
-\sffamily\bfseries
-\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
-  \node[%
-  huge,
-  right,
-  align=left,
-  rotate=5,
-  yshift=-1cm,
-  opacity=0.85,
-  text width=4.8cm,
-  minimum height=8.5cm,
-  fill=white]%
-  {\color{red!80!black}Parte 4\\ \color{black!65}Represen-\\ taciones\\ en homologías};
-\end{tikzpicture}
-#+end_latex
 
 ** \(S_{n}\)-espacios
 
@@ -869,14 +744,6 @@
      descomposición de las homologías del complejo de
      \(\Delta(G_{n})\). 
 
-** COMMENT Fin
-
-   #+attr_latex: :width 6cm :float t
-   [[file:hastalavista.jpg]]
-
-   #+BEGIN_CENTER
-   Hasta la vista, baby.
-   #+END_CENTER
 
 * COMMENT Local Variables
 
