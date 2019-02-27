@@ -1,0 +1,884 @@
+#+title: Representaciones del grupo simétrico en homologías
+#+author: Rafael Villarroel Flores, UAEH
+# #+date: 30 de octubre de 2014
+# #+date: 5 de mayo de 2015
+#+date: 6 de marzo de 2019
+#+options: H:2
+
+#+latex_class: beamer-talk
+#+startup: beamer
+#+language: es
+
+#+latex_class_options: [spanish,presentation]
+
+#+latex_header: \usepackage{arev}
+#+latex_header: \usepackage{tikz}
+#+latex_header: \usepackage{tikz-cd}
+#+latex_header: \usepackage{tkz-graph}
+#+latex_header: \usepackage{tkz-berge}
+#+latex_header: \usepackage{ytableau}
+#+latex_header: \usetikzlibrary{graphs,graphs.standard}
+#+latex_header: \usepackage[spanish,mexico,es-noshorthands]{babel}
+
+#+beamer_header: \languagepath{spanish}
+#+beamer_header: \beamerdefaultoverlayspecification{<+->}
+#+beamer_header: \setbeamertemplate{items}[circle]
+
+* Hidden code							   :noexport:
+
+#+name: fullheightgraphic
+#+begin_src latex :var yourimage="" :results latex :exports none
+\setbeamertemplate{navigation symbols}{}
+\begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=0cm,yshift=0cm] at (current page.center) {
+        \includegraphics[height=\paperheight]{yourimage}
+    };
+\end{tikzpicture}
+#+end_src
+
+* Introducción
+
+** 
+   
+   #+name: mindmap
+   #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+   #+header: :packages '(("" "tikz")) :border 1pt
+   #+header: :file (by-backend (latex "mindmap.tikz") (beamer "mindmap.tikz") (t "mindmap.png"))
+   #+header: :cache yes
+   #+begin_src latex :results raw file
+\usetikzlibrary{mindmap}
+\begin{tikzpicture}[small mindmap,concept color=gray,scale=0.8,level 1 concept/.append style={level distance=5cm}]
+  \node [concept,text=white,text width=3cm] {Representaciones en homología}
+   child[concept color=green,text=white,grow=right] {node[concept,text width=2cm] {Combinatoria}}
+   child[concept color=blue,text=white,grow=120] {node[concept,text width=2cm] {Álgebra}}
+   child[concept color=magenta,text=white,grow=240] {node[concept,text width=2cm] {Topología}};
+\end{tikzpicture}
+   #+end_src
+   
+   #+attr_html: :width 400 :alt mindmap :align center
+   #+attr_latex: :float t :width ""
+   #+RESULTS[e9f84653a51306a9e3893ae1ba9f4ea0a51218d1]: mindmap
+   [[file:mindmap.png]]
+
+* Representaciones del grupo simétrico
+
+** Parte
+   :PROPERTIES:
+   :BEAMER_opt: plain
+   :END:
+
+#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
+
+#+begin_latex
+\renewcommand*\sfdefault{ugq}
+\sffamily\bfseries
+\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
+  \node[%
+  huge,
+  right,
+  align=left,
+  rotate=5,
+  yshift=-1cm,
+  opacity=0.85,
+  text width=4.4cm,
+  minimum height=8.5cm,
+  fill=white]%
+  {\color{red!80!black}Parte 1\\ \color{black!65}Represen-\\ taciones\\ del grupo simétrico};
+\end{tikzpicture}
+#+end_latex
+      
+** Definiciones
+
+*** Grupo						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Un *grupo* es un conjunto \(G\) junto con una operación binaria
+    asociativa, con elemento neutro, donde todo elemento tiene
+    inverso.
+
+*** Ejemplos de grupos					     :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+    - Si \(X=\{1,2,\ldots,n\}\) y \(G\) es el grupo de funciones
+      biyectivas \(X\to X\) con la operación de composición y elemento
+      neutro la función identidad, entonces \(G\) es el *grupo
+      simétrico* \(S_{n}\).
+    - Si \(V\) es un espacio vectorial, \(\mathrm{GL}(V)\) es el grupo
+      de las transformaciones lineales \(V\to V\) invertibles con la
+      operación de composición.
+
+** Representación
+
+*** Representación					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Sean \(G\) un grupo y \(V\) un espacio vectorial. Una
+    *representación de \(G\) en \(V\)* es un homomorfismo de grupos
+    \begin{displaymath}
+    \phi\colon G\to \mathrm{GL}(V).
+    \end{displaymath}
+
+*** Ejemplos de representaciones			     :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+    - Para todo grupo \(G\) hay una *representación trivial* que envía
+      todo \(G\) en la identidad de \(\mathrm{GL}(V)\).
+    - Para \(G=S_{n}\) tenemos la *representación signo* en un campo
+      \(F\): (aquí \(\mathrm{GL}(F)=F-\{0\}\))
+      \begin{displaymath}
+      \phi(\sigma)=
+      \begin{cases}
+      1 & \text{si \(\sigma\) es par}\\
+      -1 & \text{si \(\sigma\) es impar}
+      \end{cases}
+      \end{displaymath}
+
+** Módulos
+
+*** \(G\)-módulo					       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    A cada morfismo \(\phi\colon G\to \mathrm{GL}(V)\) se le puede
+    asociar una *acción lineal* de \(G\) en \(V\) dada por
+    \(gv=\phi(g)(v)\). El espacio \(V\) junto con la acción lineal de
+    \(G\) se llama un \(G\)-módulo.
+
+*** Observación
+    Es equivalente que \(V\) sea un \(G\)-módulo a tener una
+    representación de \(G\) en \(V\).
+
+** Submódulos 
+   
+*** Submódulo						       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Sea \(V\) un \(G\)-módulo. Se dice que un subespacio \(W\) de
+    \(V\) es un *submódulo* si \(gw\in W\) para todos \(g\in G\), \(w\in
+    W\).
+
+*** Ejemplos						     :B_exampleblock:
+    :PROPERTIES:
+    :BEAMER_env: exampleblock
+    :END:
+    Por ejemplo \(V\) y \(\{0\}\) son submódulos de un \(G\)-módulo \(V\).
+
+** Submódulos irreducibles
+*** Submódulo irreducible				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Si \(V\) es un \(G\)-módulo cuyos únicos submódulos son \(V\) y
+    \(\{0\}\), decimos que \(V\) es *irreducible*.
+*** Maschke 							  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+
+
+    Todo \(G\)-módulo se puede escribir como suma directa de
+    \(G\)-módulos irreducibles (si los \(G\)-módulos son espacios
+    vectoriales sobre \(\mathbb{C}\)).
+
+** Clasificación de irreducibles
+
+*** Correspodencia                                                :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Si trabajamos sobre el campo \(\mathbb{C}\) de números complejos,
+    y \(G\) es un conjunto finito, existe una biyección entre el
+    conjunto de representaciones irreducibles de \(G\) y las clases de
+    conjugación de elementos de \(G\).
+
+    
+    #+name: irreducibles-1
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz")) :border 1pt
+    #+header: :headers '("\\usetikzlibrary{graphs}\\usetikzlibrary{graphs.standard}")
+    #+header: :file (by-backend (latex "irreducibles-1.tikz") (beamer "irreducibles-1.tikz") (t "irreducibles-1.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzpicture}[every node/.style={draw,minimum height=2em,very thick,align=center,text width=3cm}]
+  \graph[grow right sep]{$S_{n}$ módulos irreducibles <->[very thick]clases de conjugación de $S_{n}$};
+\end{tikzpicture}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt irreducibles-1 :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[27a3d3c769ecacad2bf17d749f63e5eae0392146]: irreducibles-1
+    [[file:irreducibles-1.png]]
+
+*** 
+    A su vez, las clases de conjugación de \(S_{n}\) están en
+    biyección con las *particiones* de \(n\). A cada partición de \(n\)
+    se le representa por un *diagrama de Young*.
+
+** Irreducibles de \(S_{n}\)
+
+*** 
+    Por ejemplo, como \(n=3\) tiene 3 particiones \(3,2+1,1+1+1\),
+    entonces (salvo isomorfismo) hay 3 \(S_{3}\)-módulos irreducibles
+    representados por los diagramas:
+
+#+name: diagramas-3
+#+header: :imagemagick yes :iminoptions -density 300 -resize 400
+#+header: :packages '(("" "ytableau")) :border 1pt
+#+header: :file (by-backend (latex "diagramas-3.tikz") (beamer "diagramas-3.tikz") (t "diagramas-3.png"))
+#+header: :cache yes
+#+begin_src latex :results raw file 
+\begin{center}
+  \ytableausetup{boxsize=1em,aligntableaux=top}
+  \ydiagram{3}\qquad\ydiagram{2,1}\qquad\ydiagram{1,1,1}
+\end{center}
+#+end_src
+
+#+attr_html: :width 400 :alt diagramas-3 :align center
+#+attr_latex: :float t :width ""
+#+RESULTS[6f84e0e06cedd382ebd4e52b804ba4426ac9f124]: diagramas-3
+[[file:diagramas-3.png]]
+
+
+*** Módulos de Specht
+
+    Los módulos irreducibles correspondientes se llaman *módulos de
+    Specht* y los denotaremos:
+    \begin{displaymath}
+    \ytableausetup{boxsize=0.2em,aligntableaux=bottom}
+    S^{\ydiagram{3}}, S^{\ydiagram{2,1}}, S^{\ydiagram{1,1,1}}
+    \end{displaymath}
+
+** Más módulos de Specht
+
+   - Para \(n=4\): 
+     \begin{displaymath}
+     \ytableausetup{boxsize=0.2em,aligntableaux=bottom}
+     S^{\ydiagram{4}}, S^{\ydiagram{3,1}}, S^{\ydiagram{2,2}}, S^{\ydiagram{2,1,1}},S^{\ydiagram{1,1,1,1}}
+     \end{displaymath}
+
+   - Para \(n=5\): 
+     \begin{displaymath}
+     \ytableausetup{boxsize=0.2em,aligntableaux=bottom}
+     S^{\ydiagram{5}}, S^{\ydiagram{4,1}}, S^{\ydiagram{3,2}}, S^{\ydiagram{3,1,1}},S^{\ydiagram{2,2,1}},S^{\ydiagram{2,1,1,1}}, S^{\ydiagram{1,1,1,1,1}}
+     \end{displaymath}
+
+   - Una actividad frecuente es descomponer un \(G\)-módulo como suma
+     de irreducibles. Se tiene, por ejemplo, que:
+     \begin{displaymath}
+     \mathrm{res}^{S_{5}}_{S_{4}} S^{\ydiagram{2,1,1,1}} = S^{\ydiagram{2,1,1}}\oplus S^{\ydiagram{1,1,1,1}}.
+     \end{displaymath}
+
+   - Y que
+     \begin{displaymath}
+     \mathrm{ind}^{S_{5}}_{S_{4}} S^{\ydiagram{3,1}} = S^{\ydiagram{4,1}}\oplus S^{\ydiagram{3,2}}\oplus S^{\ydiagram{3,1,1}}.
+     \end{displaymath}
+
+* Complejos simpliciales y homología
+** Parte
+   :PROPERTIES:
+   :BEAMER_opt: plain
+   :END:
+
+#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
+
+#+begin_latex
+\renewcommand*\sfdefault{ugq}
+\sffamily\bfseries
+\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
+  \node[%
+  huge,
+  right,
+  align=left,
+  rotate=5,
+  yshift=-1cm,
+  opacity=0.85,
+  text width=5cm,
+  minimum height=8.5cm,
+  fill=white]%
+  {\color{red!80!black}Parte 2\\ \color{black!65}Complejos\\simpliciales y\\homología};
+\end{tikzpicture}
+#+end_latex
+** Complejos simpliciales
+   
+*** 
+    Los complejos simpliciales proporcionan una forma inmediata de
+    aplicar topología en combinatoria.
+
+*** Complejo simplicial 				       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Un *complejo simplicial* \(\Delta\) es una pareja de conjuntos finitos
+    \((V(\Delta),S(\Delta))\), cuyos elementos se llaman
+    respectivamente *vértices* y *simplejos*, tales que:
+
+    - \(S(\Delta)\subseteq \mathcal{P}(V(\Delta))\),
+    - Si \(\sigma\in S(\Delta)\) y
+      \(\emptyset\ne\tau\subseteq\sigma\), entonces \(\tau\in
+      S(\Delta)\).
+
+*** Dimensión
+    Si \(\sigma\in\Delta\) tiene \(n+1\) elementos, se dice que su
+    *dimensión* es \(\dim\sigma=n\).
+
+** Ejemplos
+
+   - Por ejemplo, un complejo simplicial está definido por:
+     \begin{align*}
+     V(\Delta_{1}) &=\{1,2,3\},\\
+     S(\Delta_{1}) &=\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}.
+     \end{align*}
+
+   - Un dibujo del complejo \(\Delta_{1}\) es:
+    
+     #+name: complejo-01
+     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+     #+header: :packages '(("" "tikz") ("" "tkz-graph") ("" "tkz-berge")) :border 1pt
+     #+header: :file (by-backend (latex "complejo-01.tikz") (beamer "complejo-01.tikz") (t "complejo-01.png"))
+     #+header: :cache yes
+     #+begin_src latex :results raw file 
+\begin{tikzpicture}
+  \GraphInit[vstyle=Empty]
+  \grEmptyCycle*[RA=1,rotation=90,prefix=a]{1,2,3}
+  \EdgeInGraphLoop{a}{3}
+\end{tikzpicture}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt complejo-01 :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[4c2720797e72cff6559ca047a89ca983a2effcf9]: complejo-01
+    [[file:complejo-01.png]]
+
+   - Si definimos \(\Delta_{2}\) como \(V(\Delta_{2})=V(\Delta_{1})\)
+     y \(S(\Delta_{2})=S(\Delta_{1})\cup\{\{1,2,3\}\}\), entonces el
+     dibujo se ve:
+
+     #+name: complejo-02
+     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+     #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+     #+header: :file (by-backend (latex "complejo-02.tikz") (beamer "complejo-02.tikz") (t "complejo-02.png"))
+     #+header: :cache yes
+     #+begin_src latex :results raw file
+\begin{tikzpicture}
+  \GraphInit[vstyle=Empty]
+  \draw[fill=gray] (90:1) -- (210:1) -- (330:1) -- cycle;
+  \grEmptyCycle*[RA=1,rotation=90,prefix=a]{1,2,3}
+  \EdgeInGraphLoop{a}{3}
+\end{tikzpicture}    
+     #+end_src
+
+     #+attr_html: :width 400 :alt complejo-02 :align center
+     #+attr_latex: :float t :width ""
+     #+RESULTS[55a86d511ca8aa1a0eb64c17bcee8dfe501f36a3]: complejo-02
+     [[file:complejo-02.png]]
+
+** Espacio topológico asociado
+
+   - En general, a cualquier complejo simplicial se le asocia un espacio
+     topológico, llamado su *realización geométrica*.
+
+   - La realización geométrica es un *funtor* de la categoría de
+     complejos simpliciales a la categoría de espacios topológicos.
+
+** Complejos simpliciales en gráficas
+
+   - Un primer uso de los complejos simpliciales en combinatoria se dio
+     en la prueba de Lovász (1978) de la conjetura de Kneser (1953):
+     \begin{displaymath}
+     \chi(KG_{n,k})=n-2k+2
+     \end{displaymath}
+     
+   - Para demostrarlo, Lovász asoció a cada gráfica \(G\) su *complejo de
+     vecindades* \(\mathcal{N}(G)\), cuyo conjunto de vértices es
+     \(V(G)\) y conjunto de simplejos son los conjuntos de vértices
+     con un vecino común.
+     
+     #+name: vecindades-01
+     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+     #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+     #+header: :file (by-backend (latex "vecindades-01.tikz") (beamer "vecindades-01.tikz") (t "vecindades-01.png"))
+     #+header: :cache yes
+     #+begin_src latex :results raw file
+\begin{tikzpicture}
+  \draw (0,1) circle (2pt) node[above]{$a$} --
+  (1,0.5) circle (2pt) node[above]{$b$} --
+  (0,0) circle (2pt) node[below]{$c$} -- (0,1);
+  \draw (1,0.5) -- (2,0.5) circle (2pt) node[below]{$d$};
+  \draw (1,-0.5) node [fill=orange!80!white,below]{gráfica $G$};
+
+  \filldraw[fill=blue!50!white] (4,0.5) node[circle,left]{$d$} --
+   (5,1) node[above]{$a$} --
+   (5,0) node[below]{$c$} -- cycle;
+   \draw (5,1) -- (6,0.5)  node[right]{$b$} -- (5,0);
+   \draw (5,-0.5) node [fill=purple!80!white,below]{complejo $\mathcal{N}(G)$};
+\end{tikzpicture}
+     #+end_src
+     
+     #+attr_html: :width 400 :alt vecindades-01 :align center
+     #+attr_latex: :float t :width ""
+     #+RESULTS[3ee4e0b762c50eab4c8d8fb9a82e646baf6a9741]: vecindades-01
+     [[file:vecindades-01.png]]
+
+** El complejo de completas
+
+*** 							       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Dada una gráfica simple \(G\), el complejo simplicial
+    \(\Delta(G)\) tiene:
+
+    - vértices :: los vértices de \(G\),
+    - simplejos :: las subgráficas completas de \(G\).
+
+*** 
+    Nosotros usaremos \(\Delta(G)\) para asociarle conceptos
+    topológicos a las gráficas. Por ejemplo, diremos que las gráficas
+    \(G_{1}\), \(G_{2}\) son homotópicas si \(\Delta(G_{1})\) es
+    homotópico a \(\Delta(G_{2})\).
+
+** Característica de Euler
+
+*** 							       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Si \(\Delta\) es un complejo simplicial, la *característica de
+    Euler* de \(\Delta\) es:
+    \begin{displaymath}
+    \chi(\Delta)=c_{0}-c_{1}+c_{2}-c_{3}+\cdots,
+    \end{displaymath}
+    donde \(c_{i}\) es la cantidad de simplejos de dimensión \(i\).
+
+*** 								  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Si \(\Delta_{1}\) es homotópico a \(\Delta_{2}\), entonces 
+    \begin{displaymath}
+    \chi(\Delta_{1})=\chi(\Delta_{2}).
+    \end{displaymath}
+
+** Homología
+
+*** 
+    A cada complejo simplicial \(\Delta\) se le puede asociar una
+    sucesión de espacios vectoriales junto con transformaciones
+    lineales, tales que \(d_{i}\circ d_{i+1}=0\) (si \(\Delta\) no
+    tiene simplejos de dimensión \(k\), entonces \(C_{k}(\Delta)=0\)):
+    #+name: complejo-de-cadenas-01
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz-cd")) :border 1pt
+    #+header: :file (by-backend (latex "complejo-de-cadenas-01.tikz") (beamer "complejo-de-cadenas-01.tikz") (t "complejo-de-cadenas-01.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzcd}
+  \cdots\arrow[r] & C_{k+1}(\Delta)\arrow[r,"d_{k+1}"] & C_{k}(\Delta)\arrow[r,"d_{k}"] & C_{k-1}(\Delta)\arrow[r] &\cdots 
+\end{tikzcd}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt complejo-de-cadenas-01 :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[506ecbc358f7fe8b55ace83f97f8837b86278160]: complejo-de-cadenas-01
+    [[file:complejo-de-cadenas-01.png]]
+
+*** 
+    Si \(\Delta\) es un complejo simplicial con acción de un grupo
+    \(G\), entonces cada uno de los espacios \(C_{i}(\Delta)\) es un
+    \(G\)-módulo, y los \(d_{i}\) son morfismos de representaciones.
+
+** 
+
+*** 
+    Se define la *\(k\)-ésima homología* de \(\Delta\) como el cociente:
+    \begin{displaymath}
+    H_{k}(\Delta)=\mathrm{ker}(d_{k})/\mathrm{im} (d_{k+1}).
+    \end{displaymath}
+
+*** 
+    Por lo tanto, para cada complejo simplicial \(\Delta\) con acción
+    del grupo \(S_{n}\), se tiene que \(H_{k}(\Delta)\) es un
+    \(S_{n}\)-módulo.
+
+** Invariancia de la homología
+
+*** 								  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+
+    Si \(\Delta_{1}\) es homotópico a \(\Delta_{2}\), entonces:
+    \begin{displaymath}
+    H_{k}(\Delta_{1})\cong H_{k}(\Delta_{2}).
+    \end{displaymath}
+
+* Gráficas
+
+** Parte
+   :PROPERTIES:
+   :BEAMER_opt: plain
+   :END:
+
+#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
+
+#+begin_latex
+\renewcommand*\sfdefault{ugq}
+\sffamily\bfseries
+\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
+  \node[%
+  huge,
+  right,
+  align=left,
+  rotate=5,
+  yshift=-1cm,
+  opacity=0.85,
+  text width=4.4cm,
+  minimum height=8.5cm,
+  fill=white]%
+  {\color{red!80!black}Parte 3\\ \color{black!65}Gráficas};
+\end{tikzpicture}
+#+end_latex
+
+** Gráfica de emparejamientos
+
+*** 							       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Si \(G\) es una gráfica, definimos la *gráfica de emparejamientos*
+    \(M(G)\) como la gráfica cuyos vértices son las aristas de \(G\) y
+    dos vértices adyacentes si las aristas correspondientes no tienen
+    vértices en común. Es decir:
+    \begin{displaymath}
+    M(G)=\overline{L(G)}.
+    \end{displaymath}
+
+*** Gráfica \(G_{n}\)
+    Denotaremos con \(G_{n}\) a la gráfica \(M(K_{n})\).
+
+** Ejemplos
+
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+    
+    
+    #+name: petersen-berge
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+    #+header: :file (by-backend (latex "petersen-berge.tikz") (beamer "petersen-berge.tikz") (t "petersen-berge.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzpicture}
+  \SetUpVertex[InnerSep=0pt,MinSize=0pt]
+  \SetUpEdge[lw=1.5pt]
+  \grEmptyCycle*[rotation=90,prefix=a,RA=2,Math]{12,34,15,23,45}
+  \grEmptyCycle*[rotation=90,prefix=b,RA=1,Math]{35,25,24,14,13}
+  \EdgeInGraphLoop{a}{5}
+  \EdgeInGraphMod{b}{5}{2}
+  \EdgeIdentity{a}{b}{5}
+  \draw (0,-2) node [fill=orange!80!white,below]{$G_{5}$};
+\end{tikzpicture}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt petersen-berge :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[df31eebb8d4f0858ebd571cae93bf6b4fb58ad7b]: petersen-berge
+    [[file:petersen-berge.png]]
+
+   
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+
+    
+    #+name: emparejamientos-06
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+    #+header: :file (by-backend (latex "emparejamientos-06.tikz") (beamer "emparejamientos-06.tikz") (t "emparejamientos-06.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzpicture}
+  \SetUpEdge[lw=1.5pt]
+  \SetUpVertex[InnerSep=0pt,MinSize=0pt]
+  \grEmptyCycle*[rotation=90,prefix=a,RA=1,Math]{12,34,56}
+  \grEmptyCycle*[rotation=90-45,prefix=b,RA=2,Math]{45,15,23}
+  \grEmptyCycle*[rotation=90-15,prefix=c,RA=2,Math]{36,26,14}
+  \grEmptyCycle*[rotation=90+15,prefix=d,RA=2,Math]{46,16,24}
+  \grEmptyCycle*[rotation=90+45,prefix=e,RA=2,Math]{35,25,13}
+  \EdgeIdentity{a}{b}{3}
+  \EdgeIdentity{a}{c}{3}
+  \EdgeIdentity{a}{d}{3}
+  \EdgeIdentity{a}{e}{3}
+  \EdgeIdentity{b}{c}{3}
+  \EdgeIdentity{d}{e}{3}
+  \EdgeInGraphLoop{a}{3}
+  \draw (0,-2.4) node [fill=orange!80!white,below]{$G_{6}$};
+\end{tikzpicture}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt emparejamientos-06 :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[3d63a1a38bbe42793250a2eaa6a021e15c3b46bc]: emparejamientos-06
+    [[file:emparejamientos-06.png]]
+
+** Clanes
+
+*** 							 :B_definition:BMCOL:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :BEAMER_col: 0.5
+    :END:
+    Dada una gráfica simple \(G\), un *clan* es un conjunto \(q\) de vértices,
+    tal que:
+
+    - cualesquiera dos vértices de \(q\) son adyacentes,
+    - ningún vértice fuera de \(q\) es adyacente a todos los de \(q\).
+
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+    
+    
+    #+name: petersen-clanes
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+    #+header: :file (by-backend (latex "petersen-clanes.tikz") (beamer "petersen-clanes.tikz") (t "petersen-clanes.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzpicture}
+  \SetUpVertex[InnerSep=0pt,MinSize=0pt]
+  \SetUpEdge[lw=1.5pt]
+  \grEmptyCycle*[rotation=90,prefix=a,RA=2,Math]{12,34,15,23,45}
+  \grEmptyCycle*[rotation=90,prefix=b,RA=1,Math]{35,25,24,14,13}
+  \EdgeInGraphLoop{a}{5}
+  \EdgeInGraphMod{b}{5}{2}
+  \EdgeIdentity{a}{b}{5}
+  \draw (0,-2.2) node [fill=orange!80!white,below,align=center]{Los clanes de $G_{5}$\\ son sus aristas};
+\end{tikzpicture}
+    #+end_src
+    
+    #+attr_html: :width 400 :alt petersen-clanes :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[5b751a6123c73f648ae905f1efbe64ab58c4323b]: petersen-clanes
+    [[file:petersen-clanes.png]]
+
+** Gráfica de clanes
+
+*** 							       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Si \(G\) es una gráfica simple, la *gráfica de clanes* \(K(G)\) es
+    la gráfica cuyos vértices son los clanes de \(G\), con dos
+    vértices adyacentes si los correspondientes clanes tienen
+    intersección no vacía.
+
+** Ejemplo: \(G_{5}\)
+
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.35
+    :END:
+    
+    #+name: petersen-clanes-01
+    #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+    #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+    #+header: :file (by-backend (latex "petersen-clanes-01.tikz") (beamer "petersen-clanes-01.tikz") (t "petersen-clanes-01.png"))
+    #+header: :cache yes
+    #+begin_src latex :results raw file
+\begin{tikzpicture}[scale=0.8]
+  \SetUpVertex[InnerSep=0pt,MinSize=0pt]
+  \SetUpEdge[lw=1pt]
+  \grEmptyCycle*[rotation=90,prefix=a,RA=2,Math]{12,34,15,23,45}
+  \grEmptyCycle*[rotation=90,prefix=b,RA=1,Math]{35,25,24,14,13}
+  \EdgeInGraphLoop{a}{5}
+  \EdgeInGraphMod{b}{5}{2}
+  \EdgeIdentity{a}{b}{5}
+  \draw (0,-2.2) node[fill=orange!80!white,below,align=center]{$G_{5}$};
+\end{tikzpicture}
+    #+end_src
+     
+    #+attr_html: :width 400 :alt petersen-clanes-01 :align center
+    #+attr_latex: :float t :width ""
+    #+RESULTS[c8dd2ff12fbfb86ab3588d43038ca12faf5b3b72]: petersen-clanes-01
+     [[file:petersen-clanes-01.png]]
+
+*** 								      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.65
+    :END:
+     #+name: petersen-clanes-02
+     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
+     #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+     #+header: :file (by-backend (latex "petersen-clanes-02.tikz") (beamer "petersen-clanes-02.tikz") (t "petersen-clanes-02.png"))
+     #+header: :cache yes
+     #+begin_src latex :results raw file
+\begin{tikzpicture}
+%  \SetUpVertex[InnerSep=0pt,Style={font=\tiny}]
+  \SetUpVertex[Style={font=\tiny\sffamily}]
+  \SetVertexNormal[MinSize=0pt,InnerSep=0pt]
+  \tikzset{VertexStyle/.style={draw,rectangle}}
+  \SetUpEdge[lw=1pt]
+  \grEmptyCycle*[rotation=90,prefix=a,RA=3.2]{12-34,12-35,14-35,14-25,25-34}
+  \grEmptyCycle*[rotation=-90,prefix=b,RA=2]{14-23,13-25,15-34,12-45,24-35}
+  \grEmptyCycle*[rotation=-90,prefix=c,RA=0.9]{13-24,15-23,13-45,15-24,23-45}
+  \EdgeInGraphLoop{a}{5}
+  \EdgeMod{a}{b}{5}{2}
+  \EdgeMod{a}{b}{5}{3}
+  \EdgeMod{b}{c}{5}{1}
+  \EdgeMod{b}{c}{5}{-1}
+  \EdgeInGraphMod{c}{5}{2}
+  \draw (0,-3) node[fill=orange!80!white,below,align=center]{$K(G_{5})$};
+\end{tikzpicture}
+     #+end_src
+     
+     #+attr_html: :width 400 :alt petersen-clanes-02 :align center
+     #+attr_latex: :float t :width ""
+     #+RESULTS[d41097a026ec8ff539ae07d803c3115387472de0]: petersen-clanes-02
+     [[file:petersen-clanes-02.png]]
+
+* Representaciones en homologías
+** Parte
+   :PROPERTIES:
+   :BEAMER_opt: plain
+   :END:
+
+#+call: fullheightgraphic(yourimage="images/paperwork") :results latex
+
+#+begin_latex
+\renewcommand*\sfdefault{ugq}
+\sffamily\bfseries
+\begin{tikzpicture}[remember picture,overlay,huge/.style={font=\Huge, inner sep=.3cm}]
+  \node[%
+  huge,
+  right,
+  align=left,
+  rotate=5,
+  yshift=-1cm,
+  opacity=0.85,
+  text width=4.8cm,
+  minimum height=8.5cm,
+  fill=white]%
+  {\color{red!80!black}Parte 4\\ \color{black!65}Represen-\\ taciones\\ en homologías};
+\end{tikzpicture}
+#+end_latex
+
+** \(S_{n}\)-espacios
+
+   - Tenemos que el grupo simétrico \(S_{n}\) actúa en la
+     gráfica \(G_{n}\).
+   - Por ejemplo, \(\sigma\in S_{n}\) envía el vértice \(ij\) de
+     \(G_{n}\) en \(\sigma(i)\sigma(j)\).
+   - Por lo tanto, se induce una acción de \(S_{n}\) sobre el complejo
+     \(\Delta(G_{n})\).
+   - Y por lo tanto, para cada \(k\) se tiene que
+     \(H_{k}(\Delta(G_{n}))\) es un \(S_{n}\)-módulo.
+   - Queremos descomponer las homologías de \(\Delta(G_{n})\) en
+     submódulos irreducibles.
+
+** Teorema de Bouc
+
+*** 							       :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    - Si \(\lambda\) es partición de \(n\), escribimos \(\lambda\vdash n\).
+    - La partición conjugada \(\lambda'\) es la que tiene diagrama que
+      se obtiene transponiendo el de \(\lambda\). Por ejemplo, la
+      conjugada de \(\ydiagram{4,1}\) es \(\ydiagram{2,1,1,1}\).
+    - Se define \(d(\lambda)\) como la cantidad de cuadritos en la
+      diagonal principal. Por ejemplo, \(d(\ydiagram{4,1})=1\) y
+      \(d(\ydiagram{2,2})=2\).
+
+*** Bouc, 1984 							  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+
+    \begin{displaymath}
+  H_{k-1}(\Delta(G_{n}))\cong_{S_{n}}\bigoplus_{\substack{\lambda:\lambda\vdash n\\
+      \lambda=\lambda^{'}\\d(\lambda)=n-2k}} S^{\lambda}.
+    \end{displaymath}
+
+** Ejemplos del teorema
+
+*** \(n=5, k=2\)
+    
+    \begin{displaymath}
+    H_{1}(G_{5})\cong_{S_{5}}\bigoplus_{\substack{\lambda:\lambda\vdash 5\\
+    \lambda=\lambda^{'}\\d(\lambda)=5-2(2)=1}} S^{\lambda}=S^{\,\ydiagram{3,1,1}}.
+    \end{displaymath}
+
+*** \(n=6, k=2\)
+    
+    \begin{displaymath}
+    H_{1}(G_{6})\cong_{S_{6}}\bigoplus_{\substack{\lambda:\lambda\vdash 6\\
+            \lambda=\lambda^{'}\\d(\lambda)=6-2(2)=2}} S^{\lambda}=S^{\,\ydiagram{3,2,1}}.
+    \end{displaymath}
+
+** Equivalencias homotópicas
+
+*** Larrión, Pizaña, V., 2009 					  :B_theorem:
+    :PROPERTIES:
+    :BEAMER_env: theorem
+    :END:
+    Si \(n\leq 8\), \(K(G_{n})\) es homotópica a \(G_{n}\).
+
+*** 
+    Como consecuencia del teorema anterior, se tiene que, /como
+    espacios vectoriales/, cada homología de \(\Delta(G_{n})\) es
+    isomorfa a la homología de \(\Delta(K(G_{n}))\) para \(n\leq
+    8\). /¿Serán isomorfas como \(S_{n}\)-módulos?/
+
+*** 
+    Briseida Trejo, alumna de la UAEH, ha comprobado que el
+    isomorfismo como \(S_{n}\)-módulos se cumple para \(n=5,6\).
+
+** Preguntas
+
+   - ¿Se tiene isomorfismo de la homología de \(\Delta(K(G_{n}))\) con
+     la de \(\Delta(G_{n})\) como \(S_{n}\)-módulos para \(n=7,8\)?
+   - Sería bueno hacer un cálculo explícito de la pregunta anterior
+     usando computadora.
+   - Para \(n\geq 7\), hay evidencia computacional de que la gráfica
+     \(G_{n}\) es *clan-divergente*, pero las técnicas existentes que
+     demuestran divergencia fallan. ¿Se podrá usar teoría de
+     representaciones?
+
+** Más preguntas
+
+   - En la computadora se observa incluso que varias iteradas de
+     clanes de \(G_{7}\) son homotópicas, es decir:
+     \begin{displaymath}
+     G_{7}\simeq K(G_{7})\simeq K^{2}(G_{7})\simeq\cdots
+     \end{displaymath}
+     por lo que tendríamos una infinidad de \(S_{7}\)-módulos para
+     checar isomorfismo...
+   - Meta ambiciosa: un teorema análogo al teorema de Bouc para la
+     descomposición de las homologías del complejo de
+     \(\Delta(G_{n})\). 
+
+** COMMENT Fin
+
+   #+attr_latex: :width 6cm :float t
+   [[file:hastalavista.jpg]]
+
+   #+BEGIN_CENTER
+   Hasta la vista, baby.
+   #+END_CENTER
+
+* COMMENT Local Variables
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# org-beamer-outline-frame-title: "Esbozo"
+# End:
