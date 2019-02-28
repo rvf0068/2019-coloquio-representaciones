@@ -165,8 +165,8 @@
     #+header: :file (by-backend (latex "irreducibles-1.tikz") (beamer "irreducibles-1.tikz") (t "irreducibles-1.png"))
     #+header: :cache yes
     #+begin_src latex :results raw file
-\begin{tikzpicture}[every node/.style={draw,minimum height=2em,very thick,align=center,text width=3cm}]
-  \graph[grow right sep]{$S_{n}$ módulos irreducibles <->[very thick]clases de conjugación de $S_{n}$};
+\begin{tikzpicture}[every node/.style={draw,minimum height=2em,very thick,align=center,text width=3cm,top color=white, bottom color=black!20}]
+  \graph[grow right sep=2cm]{$S_{n}$ módulos irreducibles <->[very thick]clases de conjugación de $S_{n}$};
 \end{tikzpicture}
     #+end_src
     
