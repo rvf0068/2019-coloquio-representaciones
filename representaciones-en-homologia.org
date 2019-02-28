@@ -141,10 +141,18 @@
     :BEAMER_env: theorem
     :END:
 
-
     Todo \(G\)-módulo se puede escribir como suma directa de
     \(G\)-módulos irreducibles (si los \(G\)-módulos son espacios
     vectoriales sobre \(\mathbb{C}\)).
+
+#+beamer:\pause
+
+***                                                         :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
+    En adelante todos los espacios vectoriales se consideran sobre
+    \(\mathbb{C}\).
 
 ** Clasificación de irreducibles
 
@@ -152,10 +160,13 @@
     :PROPERTIES:
     :BEAMER_env: theorem
     :END:
-    Si trabajamos sobre el campo \(\mathbb{C}\) de números complejos,
-    y \(G\) es un conjunto finito, existe una biyección entre el
+    Si \(G\) es un grupo finito, existe una biyección entre el
     conjunto de representaciones irreducibles de \(G\) y las clases de
     conjugación de elementos de \(G\).
+
+** Correspondencia con particiones
+
+   En el caso de \(S_{n}\), además se tiene otra correspondencia:
     
     #+name: irreducibles-1
     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
@@ -164,14 +175,14 @@
     #+header: :file (by-backend (latex "irreducibles-1.tikz") (beamer "irreducibles-1.tikz") (t "irreducibles-1.png"))
     #+header: :cache yes
     #+begin_src latex :results raw file
-\begin{tikzpicture}[every node/.style={draw,minimum height=2em,very thick,align=center,text width=3cm,top color=white, bottom color=black!20}]
-  \graph[grow right sep=2cm]{$S_{n}$ módulos irreducibles <->[very thick]clases de conjugación de $S_{n}$};
+\begin{tikzpicture}[every node/.style={draw,minimum height=2em,very thick,align=center,text width=2.5cm,top color=white, bottom color=black!20}]
+  \graph[grow right sep=1cm]{$S_{n}$ módulos irreducibles <->[very thick]clases de conjugación de $S_{n}$<->[very thick] particiones de $n$};
 \end{tikzpicture}
     #+end_src
     
     #+attr_html: :width 400 :alt irreducibles-1 :align center
     #+attr_latex: :float t :width ""
-    #+RESULTS[14ce99a92f1fbd7a51c2f215ac71b41f2ae3379c]: irreducibles-1
+    #+RESULTS[3ea30dbbadec13e624e52c9ab5c365de3bfd8b55]: irreducibles-1
     [[file:irreducibles-1.png]]
 
 ** Particiones
@@ -186,9 +197,8 @@
     \lambda_{i}=n\).
 
 *** 
-    A su vez, las clases de conjugación de \(S_{n}\) están en
-    biyección con las *particiones* de \(n\). A cada partición de \(n\)
-    se le representa por un *diagrama de Young*.
+    A cada partición de \(n\) se le representa por un *diagrama de
+    Young*.
 
 ** Irreducibles de \(S_{n}\)
 
