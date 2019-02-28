@@ -196,16 +196,17 @@
     \(\lambda_{1}\geq\lambda_{2}\geq\cdots\) y tales que \(\sum
     \lambda_{i}=n\).
 
-*** 
+#+beamer: \pause
+
+***                                                         :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
     A cada partición de \(n\) se le representa por un *diagrama de
     Young*.
 
-** Irreducibles de \(S_{n}\)
-
-*** 
     Por ejemplo, como \(n=3\) tiene 3 particiones \(3,2+1,1+1+1\),
-    entonces (salvo isomorfismo) hay 3 \(S_{3}\)-módulos irreducibles
-    representados por los diagramas:
+    entonces hay 3 \(S_{3}\)-módulos irreducibles representados por:
 
 #+name: diagramas-3
 #+header: :imagemagick yes :iminoptions -density 300 -resize 400
@@ -214,7 +215,8 @@
 #+header: :cache yes
 #+begin_src latex :results raw file 
 \begin{center}
-  \ytableausetup{boxsize=1em,aligntableaux=top}
+  \small
+  \ytableausetup{boxsize=0.8em,aligntableaux=top}
   \ydiagram{3}\qquad\ydiagram{2,1}\qquad\ydiagram{1,1,1}
 \end{center}
 #+end_src
@@ -224,13 +226,15 @@
 #+RESULTS[6f84e0e06cedd382ebd4e52b804ba4426ac9f124]: diagramas-3
 [[file:diagramas-3.png]]
 
+** Módulos de Specht
 
 *** Módulos de Specht
 
     Los módulos irreducibles correspondientes se llaman *módulos de
     Specht* y los denotaremos:
     \begin{displaymath}
-    \ytableausetup{boxsize=0.2em,aligntableaux=bottom}
+    \large
+    \ytableausetup{boxsize=0.3em,aligntableaux=bottom}
     S^{\ydiagram{3}}, S^{\ydiagram{2,1}}, S^{\ydiagram{1,1,1}}
     \end{displaymath}
 
