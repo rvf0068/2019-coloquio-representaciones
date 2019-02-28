@@ -268,9 +268,14 @@
 
 ** Complejos simpliciales
    
-*** 
+***                                                         :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
     Los complejos simpliciales proporcionan una forma inmediata de
     aplicar topología en combinatoria.
+
+#+beamer: \pause
 
 *** Complejo simplicial 				       :B_definition:
     :PROPERTIES:
@@ -291,33 +296,44 @@
 
 ** Ejemplos
 
-   - Por ejemplo, un complejo simplicial está definido por:
+***  Ejemplo                                                :B_ignoreheading:
+    :PROPERTIES:
+    :BEAMER_env: ignoreheading
+    :END:
      \begin{align*}
      V(\Delta_{1}) &=\{1,2,3\},\\
      S(\Delta_{1}) &=\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}.
      \end{align*}
 
-   - Un dibujo del complejo \(\Delta_{1}\) es:
+#+beamer: \pause
+
+*** Dibujo de \(\Delta_{1}\)                                          :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
     
      #+name: complejo-01
      #+header: :imagemagick yes :iminoptions -density 300 -resize 400
-     #+header: :packages '(("" "tikz") ("" "tkz-graph") ("" "tkz-berge")) :border 1pt
+     #+header: :packages '(("" "tikz")) :border 1pt
      #+header: :file (by-backend (latex "complejo-01.tikz") (beamer "complejo-01.tikz") (t "complejo-01.png"))
      #+header: :cache yes
      #+begin_src latex :results raw file 
 \begin{tikzpicture}
-  \GraphInit[vstyle=Empty]
-  \grEmptyCycle*[RA=1,rotation=90,prefix=a]{1,2,3}
-  \EdgeInGraphLoop{a}{3}
+  \draw[very thick] (90:1cm) circle (0.5mm) node[above] {$1$} -- (210:1cm) circle (0.5mm) node[below] {$2$} --
+  (330:1cm) circle (0.5mm) node [below] {$3$} -- (90:1cm);
 \end{tikzpicture}
     #+end_src
     
     #+attr_html: :width 400 :alt complejo-01 :align center
     #+attr_latex: :float t :width ""
-    #+RESULTS[4c2720797e72cff6559ca047a89ca983a2effcf9]: complejo-01
+    #+RESULTS[5d15d9a411a81eb1a4cfe3438151cc49e4e92748]: complejo-01
     [[file:complejo-01.png]]
 
-   - Si definimos \(\Delta_{2}\) como \(V(\Delta_{2})=V(\Delta_{1})\)
+*** Ejemplo \(\Delta_{2}\)                                            :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :END:
+     Si definimos \(\Delta_{2}\) como \(V(\Delta_{2})=V(\Delta_{1})\)
      y \(S(\Delta_{2})=S(\Delta_{1})\cup\{\{1,2,3\}\}\), entonces el
      dibujo se ve:
 
@@ -570,10 +586,10 @@
 
 ** Clanes
 
-*** 							 :B_definition:BMCOL:
+*** Clan                                                 :B_definition:BMCOL:
     :PROPERTIES:
     :BEAMER_env: definition
-    :BEAMER_col: 0.5
+    :BEAMER_col: 0.6
     :END:
     Dada una gráfica simple \(G\), un *clan* es un conjunto \(q\) de vértices,
     tal que:
@@ -583,7 +599,7 @@
 
 *** 								      :BMCOL:
     :PROPERTIES:
-    :BEAMER_col: 0.5
+    :BEAMER_col: 0.4
     :END:
     
     
