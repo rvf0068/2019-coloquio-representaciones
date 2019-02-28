@@ -53,9 +53,9 @@
     - \(\mathrm{GL}(V)\) :: grupo de las transformaciones lineales
          \(V\to V\) invertibles de un espacio vectorial \(V\). (*grupo
          general lineal*)
-    - \(M_{n}(F)\) :: grupo de matrices cuadradas invertibles
-                      \(n\times n\) con entradas en un campo
-                      \(F\). (*grupo de matrices*)
+    - \(\mathrm{GL}_{n}(F)\) :: grupo de matrices cuadradas
+         invertibles \(n\times n\) con entradas en un campo
+         \(F\). (*grupo de matrices*)
 
 
 ** Representación
@@ -74,10 +74,10 @@
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    Sean \(G\) un grupo y \(V\) un espacio vectorial. Una
+    Sean \(G\) un grupo y \(F\) un campo. Una
     *representación matricial* es un homomorfismo de grupos
     \begin{displaymath}
-    \phi\colon G\to M_{n}(F).
+    \phi\colon G\to \mathrm{GL}_{n}(F).
     \end{displaymath}
 
 
@@ -87,7 +87,8 @@
     :BEAMER_env: exampleblock
     :END:
     - Para todo grupo \(G\) hay una *representación trivial* que envía
-      todo \(G\) en la identidad de \(\mathrm{GL}(V)\).
+      todo \(G\) en la identidad de \(\mathrm{GL}(V)\) (o la matriz
+      identidad de \(\mathrm{GL}_{n}(F)\)).
     - Para \(G=S_{n}\) tenemos la *representación signo* en un campo
       \(F\): (aquí \(\mathrm{GL}(F)=F-\{0\}\))
       \begin{displaymath}
@@ -105,7 +106,7 @@
     :BEAMER_env: definition
     :END:
     A cada morfismo \(\phi\colon G\to \mathrm{GL}(V)\) se le puede
-    asociar una *acción lineal* de \(G\) en \(V\) dada por
+    asociar una *acción lineal* \(G\times V\to V\) dada por
     \(gv=\phi(g)(v)\). El espacio \(V\) junto con la acción lineal de
     \(G\) se llama un \(G\)-módulo.
 
@@ -119,9 +120,8 @@
     :PROPERTIES:
     :BEAMER_env: definition
     :END:
-    Sea \(V\) un \(G\)-módulo. Se dice que un subespacio \(W\) de
-    \(V\) es un *submódulo* si \(gw\in W\) para todos \(g\in G\), \(w\in
-    W\).
+    Sea \(V\) un \(G\)-módulo. Se dice que \(W\leq V\) es un
+    *submódulo* si \(gw\in W\) para todos \(g\in G\), \(w\in W\).
 
 *** Ejemplos						     :B_exampleblock:
     :PROPERTIES:
@@ -156,7 +156,6 @@
     y \(G\) es un conjunto finito, existe una biyección entre el
     conjunto de representaciones irreducibles de \(G\) y las clases de
     conjugación de elementos de \(G\).
-
     
     #+name: irreducibles-1
     #+header: :imagemagick yes :iminoptions -density 300 -resize 400
@@ -172,8 +171,19 @@
     
     #+attr_html: :width 400 :alt irreducibles-1 :align center
     #+attr_latex: :float t :width ""
-    #+RESULTS[27a3d3c769ecacad2bf17d749f63e5eae0392146]: irreducibles-1
+    #+RESULTS[14ce99a92f1fbd7a51c2f215ac71b41f2ae3379c]: irreducibles-1
     [[file:irreducibles-1.png]]
+
+** Particiones
+
+*** Partición                                                  :B_definition:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+    Una partición \(\lambda=(\lambda_{1},\lambda_{2},\ldots)\) de
+    \(n\) es una sucesión de enteros no negativos tales que
+    \(\lambda_{1}\geq\lambda_{2}\geq\cdots\) y tales que \(\sum
+    \lambda_{i}=n\).
 
 *** 
     A su vez, las clases de conjugación de \(S_{n}\) están en
