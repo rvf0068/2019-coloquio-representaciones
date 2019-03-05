@@ -31,6 +31,7 @@
    #+RESULTS[e9f84653a51306a9e3893ae1ba9f4ea0a51218d1]: mindmap
    [[file:mindmap.png]]
 
+
 * Representaciones del grupo simétrico
 
 ** Definiciones
@@ -300,16 +301,20 @@
     :PROPERTIES:
     :BEAMER_env: ignoreheading
     :END:
+
+     Consideremos los complejos \(\Delta_{1}\) y \(\Delta_{2}\):
      \begin{align*}
      V(\Delta_{1}) &=\{1,2,3\},\\
-     S(\Delta_{1}) &=\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\}.
+     S(\Delta_{1}) &=\{\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\}\},\\
+     V(\Delta_{2}) &=V(\Delta_{1}),\\
+     S(\Delta_{2}) &=S(\Delta_{1})\cup\{\{1,2,3\}\}.
      \end{align*}
 
 #+beamer: \pause
 
 *** Dibujo de \(\Delta_{1}\)                                          :BMCOL:
     :PROPERTIES:
-    :BEAMER_col: 0.5
+    :BEAMER_col: 0.4
     :END:
     
      #+name: complejo-01
@@ -319,41 +324,39 @@
      #+header: :cache yes
      #+begin_src latex :results raw file 
 \begin{tikzpicture}
-  \draw[very thick] (90:1cm) circle (0.5mm) node[above] {$1$} -- (210:1cm) circle (0.5mm) node[below] {$2$} --
-  (330:1cm) circle (0.5mm) node [below] {$3$} -- (90:1cm);
+  \draw[very thick] (90:1cm) circle (0.3mm) node[above] {$1$} -- (210:1cm) circle (0.3mm) node[below] {$2$} --
+  (330:1cm) circle (0.3mm) node [below] {$3$} -- (90:1cm);
+  \draw (-90:1cm) node [fill=orange!80!white,below]{$\Delta_{1}$};
 \end{tikzpicture}
     #+end_src
     
     #+attr_html: :width 400 :alt complejo-01 :align center
     #+attr_latex: :float t :width ""
-    #+RESULTS[5d15d9a411a81eb1a4cfe3438151cc49e4e92748]: complejo-01
+    #+RESULTS[3fdcfa7b7f77a3f0951c29f9d825094662df1eb4]: complejo-01
     [[file:complejo-01.png]]
 
 *** Ejemplo \(\Delta_{2}\)                                            :BMCOL:
     :PROPERTIES:
-    :BEAMER_col: 0.5
+    :BEAMER_col: 0.4
     :END:
-     Si definimos \(\Delta_{2}\) como \(V(\Delta_{2})=V(\Delta_{1})\)
-     y \(S(\Delta_{2})=S(\Delta_{1})\cup\{\{1,2,3\}\}\), entonces el
-     dibujo se ve:
 
      #+name: complejo-02
      #+header: :imagemagick yes :iminoptions -density 300 -resize 400
-     #+header: :packages '(("" "tikz") ("" "tkz-berge")) :border 1pt
+     #+header: :packages '(("" "tikz")) :border 1pt
      #+header: :file (by-backend (latex "complejo-02.tikz") (beamer "complejo-02.tikz") (t "complejo-02.png"))
      #+header: :cache yes
      #+begin_src latex :results raw file
 \begin{tikzpicture}
-  \GraphInit[vstyle=Empty]
-  \draw[fill=gray] (90:1) -- (210:1) -- (330:1) -- cycle;
-  \grEmptyCycle*[RA=1,rotation=90,prefix=a]{1,2,3}
-  \EdgeInGraphLoop{a}{3}
+  \draw[very thick] (90:1cm) circle (0.3mm) node[above] {$1$} -- (210:1cm) circle (0.3mm) node[below] {$2$} --
+  (330:1cm) circle (0.3mm) node [below] {$3$} -- (90:1cm);
+  \draw[fill, top color=black!30, bottom color=black!80] (90:1cm) -- (210:1cm) -- (330:1cm) -- cycle;
+  \draw (-90:1cm) node [fill=orange!80!white,below]{$\Delta_{2}$};
 \end{tikzpicture}    
      #+end_src
 
      #+attr_html: :width 400 :alt complejo-02 :align center
      #+attr_latex: :float t :width ""
-     #+RESULTS[55a86d511ca8aa1a0eb64c17bcee8dfe501f36a3]: complejo-02
+     #+RESULTS[487114e455724d3317c7c610afafcc3ae8253ef6]: complejo-02
      [[file:complejo-02.png]]
 
 ** Espacio topológico asociado
