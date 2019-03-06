@@ -848,9 +848,11 @@
    FIN
    #+end_center
 
+
 * COMMENT Local Variables
 
 # Local Variables:
 # org-confirm-babel-evaluate: nil
 # org-beamer-outline-frame-title: "Esbozo"
+# org-latex-compiler: "xelatex"
 # End:

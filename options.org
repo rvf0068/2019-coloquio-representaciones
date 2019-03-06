@@ -1,6 +1,7 @@
 # FORMATO PARA PRESENTACION
 #+latex_class: beamer
 #+startup: beamer
+# #+latex_class_options: [spanish, presentation, aspectratio=169]
 #+latex_class_options: [spanish, presentation]
 
 # FORMATO PARA ARTICULO
@@ -21,7 +22,8 @@
 #+beamer_header: \beamerdefaultoverlayspecification{<+->}
 #+beamer_header: \languagepath{spanish}
 
-#+latex_header: \usepackage{lxfonts}
+# #+latex_header: \usepackage{lxfonts}
+#+latex_header: \usepackage{newtxsf}
 #+latex_header: \usefonttheme{professionalfonts}
 #+latex_header: \usepackage{tikz}
 #+latex_header: \usepackage{tikz-cd}
