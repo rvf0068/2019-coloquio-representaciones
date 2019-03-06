@@ -4,7 +4,7 @@
 #+author: Rafael Villarroel Flores, UAEH{{{newline}}}\scriptsize Trabajo conjunto con Paco Larrión, Miguel Pizaña, {{{newline}}}Daniel Robles, Briseida Trejo y Manuel Campero{{{newline}}}
 # #+date: 30 de octubre de 2014
 # #+date: 5 de mayo de 2015
-#+date: 6 de marzo de 2019
+#+date: 6 de marzo de 2019{{{newline}}}\bfseries XXXIV Coloquio Víctor Neumann-Lara
 #+setupfile: options.org
 
 #+latex: \setbeamercolor{alerted text}{fg=teal}
@@ -779,16 +779,33 @@
 *** \(n=5, k=2\)
     
     \begin{displaymath}
-    H_{1}(G_{5})\cong_{S_{5}}\bigoplus_{\substack{\lambda:\lambda\vdash 5\\
+    H_{1}(\Delta(G_{5}))\cong_{S_{5}}\bigoplus_{\substack{\lambda:\lambda\vdash 5\\
     \lambda=\lambda^{'}\\d(\lambda)=5-2(2)=1}} S^{\lambda}=S^{\,\ydiagram{3,1,1}}.
     \end{displaymath}
 
 *** \(n=6, k=2\)
     
     \begin{displaymath}
-    H_{1}(G_{6})\cong_{S_{6}}\bigoplus_{\substack{\lambda:\lambda\vdash 6\\
+    H_{1}(\Delta(G_{6}))\cong_{S_{6}}\bigoplus_{\substack{\lambda:\lambda\vdash 6\\
             \lambda=\lambda^{'}\\d(\lambda)=6-2(2)=2}} S^{\lambda}=S^{\,\ydiagram{3,2,1}}.
     \end{displaymath}
+
+** Más ejemplos
+
+*** \(n=7, k=3\)
+    
+    \begin{displaymath}
+    H_{2}(\Delta(G_{7}))\cong_{S_{7}}\bigoplus_{\substack{\lambda:\lambda\vdash 7\\
+    \lambda=\lambda^{'}\\d(\lambda)=7-2(3)=1}} S^{\lambda}=S^{\,\ydiagram{4,1,1,1}}.
+    \end{displaymath}
+
+*** \(n=8, k=3\)
+    
+    \begin{displaymath}
+    H_{2}(\Delta(G_{8}))\cong_{S_{8}}\bigoplus_{\substack{\lambda:\lambda\vdash 8\\
+            \lambda=\lambda^{'}\\d(\lambda)=8-2(3)=2}} S^{\lambda}=S^{\,\ydiagram{3,3,2}}\oplus S^{\,\ydiagram{4,2,1,1}}.
+    \end{displaymath}
+
 
 ** Equivalencias homotópicas
 
@@ -826,9 +843,10 @@
      usando computadora. Actualmente, Manuel Campero, alumno de la
      UAEH, trabaja en esto.
    - Para \(n\geq 7\), hay evidencia computacional de que la gráfica
-     \(G_{n}\) es *clan-divergente*, pero las técnicas existentes que
-     demuestran divergencia fallan. ¿Se podrá usar teoría de
-     representaciones?
+     \(G_{n}\) es *clan-divergente* (la sucesión de órdenes de las
+     iteradas de clanes son: 21, 105, 126, 4893, 168756) pero las
+     técnicas existentes que demuestran divergencia fallan. ¿Se podrá
+     usar teoría de representaciones?
 
 ** Más preguntas
 
@@ -838,18 +856,20 @@
      G_{7}\simeq K(G_{7})\simeq K^{2}(G_{7})\simeq\cdots
      \end{displaymath}
      por lo que tendríamos una infinidad de \(S_{7}\)-módulos para
-     checar isomorfismo...
+     checar isomorfismo.
+
    - Meta ambiciosa: un teorema análogo al teorema de Bouc para la
      descomposición de las homologías del complejo de
      \(\Delta(K(G_{n}))\). 
 
-** 
-
-   #+begin_center
+**                                                          :B_ignoreheading:
+   :PROPERTIES:
+   :BEAMER_env: ignoreheading
+   :END:
+\begin{frame}[standout]
    \huge
    FIN
-   #+end_center
-
+\end{frame}
 
 * COMMENT Local Variables
 
