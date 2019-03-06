@@ -7,6 +7,8 @@
 #+date: 6 de marzo de 2019
 #+setupfile: options.org
 
+#+latex: \setbeamercolor{alerted text}{fg=teal}
+
 * Introducción
 
 ** 
@@ -326,7 +328,7 @@
 \begin{tikzpicture}
   \draw[very thick] (90:1cm) circle (0.3mm) node[above] {$1$} -- (210:1cm) circle (0.3mm) node[below] {$2$} --
   (330:1cm) circle (0.3mm) node [below] {$3$} -- (90:1cm);
-  \draw (-90:1cm) node [fill=orange!80!white,below]{$\Delta_{1}$};
+  \draw (-90:1cm) node [fill=teal!50!white,below]{$\Delta_{1}$};
 \end{tikzpicture}
     #+end_src
     
@@ -350,7 +352,7 @@
   \draw[very thick] (90:1cm) circle (0.3mm) node[above] {$1$} -- (210:1cm) circle (0.3mm) node[below] {$2$} --
   (330:1cm) circle (0.3mm) node [below] {$3$} -- (90:1cm);
   \draw[fill, top color=black!30, bottom color=black!80] (90:1cm) -- (210:1cm) -- (330:1cm) -- cycle;
-  \draw (-90:1cm) node [fill=orange!80!white,below]{$\Delta_{2}$};
+  \draw (-90:1cm) node [fill=teal!50!white,below]{$\Delta_{2}$};
 \end{tikzpicture}    
      #+end_src
 
@@ -398,12 +400,12 @@
     (150:1) node {} --
     (210:1) node {} --
     (0,0);
-  \draw (0,-1) node [fill=orange!80!white,below]{gráfica $G$};
+  \draw (0,-1) node [fill=teal!50!white,below]{gráfica $G$};
   \filldraw[fill=blue!50!white] (4,0) node[circle,left]{$d$} --
    (5,0.5) node[above]{$a$} --
    (5,-0.5) node[below]{$c$} -- cycle;
    \draw (5,0.5) -- (6,0)  node[right]{$b$} -- (5,-0.5);
-   \draw (5,-1) node [fill=purple!80!white,below]{complejo $\mathcal{N}(G)$};
+   \draw (5,-1) node [fill=teal!50!white,below]{complejo $\mathcal{N}(G)$};
 \end{tikzpicture}
      #+end_src
      
@@ -569,7 +571,7 @@
   \EdgeInGraphLoop{a}{5}
   \EdgeInGraphMod{b}{5}{2}
   \EdgeIdentity{a}{b}{5}
-  \draw (0,-2) node [fill=orange!80!white,below]{$G_{5}$};
+  \draw (0,-2) node [fill=teal!50!white,below]{$G_{5}$};
 \end{tikzpicture}
     #+end_src
     
@@ -606,7 +608,7 @@
   \EdgeIdentity{b}{c}{3}
   \EdgeIdentity{d}{e}{3}
   \EdgeInGraphLoop{a}{3}
-  \draw (0,-2.4) node [fill=orange!80!white,below]{$G_{6}$};
+  \draw (0,-2.4) node [fill=teal!50!white,below]{$G_{6}$};
 \end{tikzpicture}
     #+end_src
     
@@ -648,7 +650,7 @@
   \EdgeInGraphLoop{a}{5}
   \EdgeInGraphMod{b}{5}{2}
   \EdgeIdentity{a}{b}{5}
-  \draw (0,-2.2) node [fill=orange!80!white,below,align=center]{Los clanes de $G_{5}$\\ son sus aristas};
+  \draw (0,-2.2) node [fill=teal!50!white,below,align=center]{Los clanes de $G_{5}$\\ son sus aristas};
 \end{tikzpicture}
     #+end_src
     
@@ -689,7 +691,7 @@
   \EdgeInGraphLoop{a}{5}
   \EdgeInGraphMod{b}{5}{2}
   \EdgeIdentity{a}{b}{5}
-  \draw (0,-2.2) node[fill=orange!80!white,below,align=center]{$G_{5}$};
+  \draw (0,-2.2) node[fill=teal!50!white,below,align=center]{$G_{5}$};
 \end{tikzpicture}
     #+end_src
      
@@ -723,7 +725,7 @@
   \EdgeMod{b}{c}{5}{1}
   \EdgeMod{b}{c}{5}{-1}
   \EdgeInGraphMod{c}{5}{2}
-  \draw (0,-3) node[fill=orange!80!white,below,align=center]{$K(G_{5})$};
+  \draw (0,-3) node[fill=teal!50!white,below,align=center]{$K(G_{5})$};
 \end{tikzpicture}
      #+end_src
      
