@@ -1,8 +1,8 @@
 # FORMATO PARA PRESENTACION
 #+latex_class: beamer
 #+startup: beamer
-# #+latex_class_options: [spanish, presentation, aspectratio=169]
-#+latex_class_options: [spanish, presentation]
+#+latex_class_options: [spanish, presentation, aspectratio=169]
+# #+latex_class_options: [spanish, presentation]
 
 # FORMATO PARA ARTICULO
 # #+latex_class: article
